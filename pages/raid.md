@@ -7,11 +7,6 @@ permalink: /raid
 
 <br>
 
-<div class="box">
-    <img src="https://via.placeholder.com/60x60">
-    <span style="">Works.</span>
-</div>
-
 <center><a href="https://idleanimation.com/raid/vaultofglass"><img src="/img/raidbanner/vog.jpg"></a>
 <a href="https://idleanimation.com/raid/lastwish"><img src="/img/raidbanner/lw.png"></a></center><br>
 <center><a href="https://idleanimation.com/raid/deepstonecrypt"><img src="/img/raidbanner/dsc.png"></a>
