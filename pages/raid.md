@@ -33,7 +33,7 @@ permalink: /raid
 <br>
 
 <br>
-
+<div class="my_body">
 <a href="https://idleanimation.com/raid/vaultofglass"><img src="/img/raidbanner/vog.jpg"></a> • Vault of Glass<br><br>
 <a href="https://idleanimation.com/raid/lastwish"><img src="/img/raidbanner/lw.png"></a> • Last Wish<br><br>
 <a href="https://idleanimation.com/raid/deepstonecrypt"><img src="/img/raidbanner/dsc.png"></a> • Deep Stone Crypt<br><br>
