@@ -7,3 +7,5 @@ gem "github-pages", '197', group: :jekyll_plugins
 gem 'jekyll-paginate'
 
 gem 'jekyll-redirect-from'
+
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
