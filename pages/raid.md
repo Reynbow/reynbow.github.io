@@ -1,6 +1,6 @@
 ---
 layout: page
-permalink: /bussy
+permalink: /raid
 ---
 
 <body>
