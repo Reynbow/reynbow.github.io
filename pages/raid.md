@@ -7,9 +7,9 @@ permalink: /raid
 
 <br>
 
-<div>
-  <img style="vertical-align:middle" src="https://via.placeholder.com/60x60" alt="A grey image showing text 60 x 60">
-  <span style="">Works.</span>
+<div class="box">
+    <img src="https://via.placeholder.com/60x60">
+    <span style="">Works.</span>
 </div>
 
 <a href="https://idleanimation.com/raid/vaultofglass"><img src="/img/raidbanner/vog.jpg"></a>
