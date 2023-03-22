@@ -21,6 +21,7 @@ description: Australian Gamers
 # List of links in the navigation bar
 navbar-links:
   Home: "index"
+  Raid: "raid"
   About: "about"
   Contact: "contact"
   Resources:
