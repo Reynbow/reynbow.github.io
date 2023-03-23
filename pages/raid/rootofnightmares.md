@@ -19,7 +19,7 @@ permalink: /raid/rootofnightmares
             .my_body
             {
                 font-family:    roboto, sans-serif;
-                font-size:      20px;
+                font-size:      18px;
                 font-weight:    thin;
                 
             }
@@ -65,7 +65,8 @@ permalink: /raid/rootofnightmares
 
 <div class="my_red">Champions: <img src="https://www.bungie.net/common/destiny2_content/icons/2ac9bcf4a961c3b3e31da7b76a5a87f9.png" style="max-height: 26px;"> Barrier</div>
 <div class="my_yellow">Close and medium combat distances</div>
-<div class="my_green">Small and medium enemies with time delayed mini-boss enemies.</div>
+<div class="my_green">Red, Orange and Yellow bar enemies, with time delayed mini-boss enemies.</div>
+<div class="my_body">
 
 <br>
 <div class="my_head">2 • Scission</div>
@@ -75,7 +76,35 @@ permalink: /raid/rootofnightmares
 <div class="my_body">Information</div><br>
 <br>
 <div class="my_head">4 • Nezarec</div>
-<div class="my_body">Information</div><br>
+<div class="my_red">Champions: NONE</div>
+<div class="my_yellow">Close and medium combat distances</div>
+<div class="my_green">Red, Orange and Yellow bar enemies.</div>
+
+<div style="height: 10px;"></div>
+<div class="my_body">Weapons:</div>
+<div class="my_body">
+    <div style="width:300px; height: 62px; position: relative;">
+        <div style="position: absolute; z-index: 7; left: 0;"><img src="https://www.bungie.net/common/destiny2_content/icons/097f8146229e7e8693a989952f44c843.jpg" style="max-height: 62px; border: 4px solid #181a1b"></div>
+        <div style="position: absolute; left: 75px; z-index: 6;"><img src="https://www.bungie.net/common/destiny2_content/icons/ddfe8daa6f2093efae32bd6f70ef36c5.jpg" style="max-height: 62px; border: 4px solid #181a1b"></div>
+        <div style="position: absolute; left: 90px; z-index: 5;"><img src="https://www.bungie.net/common/destiny2_content/icons/ddfe8daa6f2093efae32bd6f70ef36c5.jpg" style="max-height: 62px; border: 4px solid #181a1b"></div>
+        <div style="position: absolute; left: 105px; z-index: 4;"><img src="https://www.bungie.net/common/destiny2_content/icons/ddfe8daa6f2093efae32bd6f70ef36c5.jpg" style="max-height: 62px; border: 4px solid #181a1b"></div>
+        <div style="position: absolute; left: 120px; z-index: 3;"><img src="https://www.bungie.net/common/destiny2_content/icons/ddfe8daa6f2093efae32bd6f70ef36c5.jpg" style="max-height: 62px; border: 4px solid #181a1b"></div>
+        <div style="position: absolute; left: 135px; z-index: 2;"><img src="https://www.bungie.net/common/destiny2_content/icons/ddfe8daa6f2093efae32bd6f70ef36c5.jpg" style="max-height: 62px; border: 4px solid #181a1b"></div>
+        <div style="position: absolute; left: 150px; z-index: 1;"><img src="https://www.bungie.net/common/destiny2_content/icons/ddfe8daa6f2093efae32bd6f70ef36c5.jpg" style="max-height: 62px; border: 4px solid #181a1b"></div>
+    </div>
+</div>
+
+<div style="height: 10px;"></div>
+<div class="my_body">Optimal Supers:</div>
+<div class="my_body">
+        <div>
+        <img src="https://www.bungie.net/common/destiny2_content/icons/c7b9207c8260715fc61f892bbbeda1be.jpg" style="max-height: 62px; border: 4px solid #181a1b"> <img src="https://www.bungie.net/common/destiny2_content/icons/5dbb9a2f285df3ee20fe37d073350a37.png" style="max-height: 32px;"> Well of Radiance</div>
+        <div style="height: 4px;"></div>
+        <img src="https://www.bungie.net/common/destiny2_content/icons/9889b81325d1cf023a261d735d3031d4.jpg" style="max-height: 62px; border: 4px solid #181a1b"> <img src="https://www.bungie.net/common/destiny2_content/icons/5919e3e43ab455cee03ff23cdaa23080.png" style="max-height: 32px;"> Gathering Storm</div>
+        <div style="height: 4px;"></div>
+        <img src="https://www.bungie.net/common/destiny2_content/icons/25f3ac3f80b3ec8a7607241f18cbbecb.jpg" style="max-height: 62px; border: 4px solid #181a1b"> <img src="https://www.bungie.net/common/destiny2_content/icons/4e03473a24049bdb6013badca6b61965.png" style="max-height: 32px;"> Thundercrash
+
+</div>
 <br>
 <br>
 
