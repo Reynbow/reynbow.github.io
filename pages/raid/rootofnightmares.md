@@ -86,6 +86,8 @@ permalink: /raid/rootofnightmares
 <div class="my_body"><img src="https://www.bungie.net/common/destiny2_content/icons/ddfe8daa6f2093efae32bd6f70ef36c5.jpg" style="max-height: 62px; border: 4px solid #181a1b"> <img src="https://www.bungie.net/common/destiny2_content/icons/c397f3437d3d5a8c61a76e27a91ee4f0.jpg" style="max-height: 62px; border: 4px solid #181a1b"> <img src="https://www.bungie.net/common/destiny2_content/icons/0f9ed3d25bd2c940b941d872bc931b5b.jpg" style="max-height: 62px; border: 4px solid #181a1b">
 <div style="height: 10px;"></div>
 <div>
+<div style="height: 10px;"></div>
+<div class="my_body">Skating Supers:</div>
 <img src="https://www.bungie.net/common/destiny2_content/icons/c7b9207c8260715fc61f892bbbeda1be.jpg" style="max-height: 62px; border: 4px solid #181a1b"> <img src="https://www.bungie.net/common/destiny2_content/icons/5dbb9a2f285df3ee20fe37d073350a37.png" style="max-height: 32px;"> Well of Radiance</div>
 <div style="height: 4px;"></div>
 <img src="https://www.bungie.net/common/destiny2_content/icons/dc727f02562fb62eba49a6eb2c1174d5.jpg" style="max-height: 62px; border: 4px solid #181a1b"> <img src="https://www.bungie.net/common/destiny2_content/icons/bac0872a1d59eb9a6f3a0ca7f349b8cc.png" style="max-height: 32px;"> Silence and Squall</div>
