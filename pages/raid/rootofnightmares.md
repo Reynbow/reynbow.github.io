@@ -62,7 +62,6 @@ permalink: /raid/rootofnightmares
 <br>
 
 
-<center><div class="my_head">Encounter 1 - Cataclysm</div></center>
 <center><img src="/img/raidbanner/cataclysm.webp" style="max-height: 142px; border: 4px solid #181a1b"></center>
 
 <br>
@@ -81,7 +80,6 @@ permalink: /raid/rootofnightmares
 <br>
 <br>
 
-<center><div class="my_head">Encounter 2 - Scission</div></center>
 <center><img src="/img/raidbanner/scission.webp" style="max-height: 142px; border: 4px solid #181a1b"></center>
 
 <br>
@@ -106,7 +104,6 @@ permalink: /raid/rootofnightmares
 <br>
 <br>
 
-<center><div class="my_head">Encounter 3 - Macrocosm</div></center>
 <center><img src="/img/raidbanner/macrocosm.webp" style="max-height: 142px; border: 4px solid #181a1b"></center>
 
 <br>
@@ -145,7 +142,6 @@ permalink: /raid/rootofnightmares
 <br>
 <br>
 
-<center><div class="my_head">Encounter 4 - Nezarec</div></center>
 <center><img src="/img/raidbanner/nezarec.webp" style="max-height: 142px; border: 4px solid #181a1b"></center>
 <br>
 
