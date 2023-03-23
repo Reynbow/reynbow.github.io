@@ -70,7 +70,7 @@ permalink: /raid/rootofnightmares
 <div class="my_body"><img src="https://www.bungie.net/common/destiny2_content/icons/4716d462aad8d5913c22a34ee8eac494.png" style="max-height: 38px;"> Eager Edge swords help with the person running the mechanic.
 <div style="height: 10px;"></div>
 <div class="my_body">Weapons:</div>
-<div class="my_body"><img src="https://www.bungie.net/common/destiny2_content/icons/ddfe8daa6f2093efae32bd6f70ef36c5.jpg" style="max-height: 62px; border: 4px solid #181a1b"> <img src="https://www.bungie.net/common/destiny2_content/icons/c397f3437d3d5a8c61a76e27a91ee4f0.jpg" style="max-height: 62px; border: 4px solid #181a1b"> <img src="https://www.bungie.net/common/destiny2_content/icons/0f9ed3d25bd2c940b941d872bc931b5b.jpg" style="max-height: 62px; border: 4px solid #181a1b">
+<div class="my_body"><img src="https://www.bungie.net/common/destiny2_content/icons/ddfe8daa6f2093efae32bd6f70ef36c5.jpg" style="max-height: 62px; border: 4px solid #181a1b"> <img src="https://www.bungie.net/common/destiny2_content/icons/c397f3437d3d5a8c61a76e27a91ee4f0.jpg" style="max-height: 62px; border: 4px solid #181a1b"> <img src="https://www.bungie.net/common/destiny2_content/icons/0f9ed3d25bd2c940b941d872bc931b5b.jpg" style="max-height: 62px; border: 4px solid #181a1b"></div>
 
 <br>
 <hr>
