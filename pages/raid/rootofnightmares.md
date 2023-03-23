@@ -57,8 +57,8 @@ permalink: /raid/rootofnightmares
 
 <br>
 <div class="my_body">
-<a href="/raid/">Back</a><br>
-<a href="/raid/"><img src="/img/raidbanner/raidpres.png"></a><img src="/img/raidbanner/ron_banner.png"><br><br>
+<a href="/raid">Back</a><br>
+<a href="/raid"><img src="/img/raidbanner/raidpres.png"></a><img src="/img/raidbanner/ron_banner.png"><br><br>
 <br>
 
 <div class="my_head">1 • Cataclysm</div>
