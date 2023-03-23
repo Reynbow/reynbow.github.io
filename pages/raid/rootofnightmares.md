@@ -61,7 +61,12 @@ permalink: /raid/rootofnightmares
 <a href="/raid"><img src="/img/raidbanner/raidpres.png"></a><img src="/img/raidbanner/ron_banner.png"><br><br>
 <br>
 
-<div class="my_head">1 • Cataclysm</div>
+
+<center><div class="my_head">Encounter 1 - Cataclysm</div></center>
+<center><img src="/img/raidbanner/cataclysm.webp" style="max-height: 142px; border: 4px solid #181a1b"></center>
+
+<br>
+
 
 <div class="my_red">Champions: <img src="https://www.bungie.net/common/destiny2_content/icons/2ac9bcf4a961c3b3e31da7b76a5a87f9.png" style="max-height: 26px;"> Barrier</div>
 <div class="my_yellow">Close and medium combat distances</div>
@@ -73,9 +78,13 @@ permalink: /raid/rootofnightmares
 <div class="my_body"><img src="https://www.bungie.net/common/destiny2_content/icons/ddfe8daa6f2093efae32bd6f70ef36c5.jpg" style="max-height: 62px; border: 4px solid #181a1b"> <img src="https://www.bungie.net/common/destiny2_content/icons/c397f3437d3d5a8c61a76e27a91ee4f0.jpg" style="max-height: 62px; border: 4px solid #181a1b"> <img src="https://www.bungie.net/common/destiny2_content/icons/0f9ed3d25bd2c940b941d872bc931b5b.jpg" style="max-height: 62px; border: 4px solid #181a1b"></div>
 
 <br>
-<hr>
+<br>
+<br>
 
-<div class="my_head">2 • Scission</div>
+<center><div class="my_head">Encounter 2 - Scission</div></center>
+<center><img src="/img/raidbanner/scission.webp" style="max-height: 142px; border: 4px solid #181a1b"></center>
+
+<br>
 <div class="my_red">Champions: <img src="https://www.bungie.net/common/destiny2_content/icons/2ac9bcf4a961c3b3e31da7b76a5a87f9.png" style="max-height: 26px;"> Barrier</div>
 <div class="my_yellow">Close and medium combat distances</div>
 <div class="my_green">Red, Orange and Yellow bar enemies.</div>
@@ -94,9 +103,13 @@ permalink: /raid/rootofnightmares
 
 
 <br>
-<hr>
+<br>
+<br>
 
-<div class="my_head">3 • Macrocosm</div>
+<center><div class="my_head">Encounter 3 - Macrocosm</div></center>
+<center><img src="/img/raidbanner/macrocosm.webp" style="max-height: 142px; border: 4px solid #181a1b"></center>
+
+<br>
 <div class="my_red">Champions: NONE</div>
 <div class="my_red">BOSS ENCOUNTER - DPS PHASES</div>
 <div class="my_yellow">Close and medium combat distances</div>
@@ -129,9 +142,14 @@ permalink: /raid/rootofnightmares
 </div>
 
 <br>
-<hr>
+<br>
+<br>
 
-<div class="my_head">4 • Nezarec</div>
+<center><div class="my_head">Encounter 4 - Nezarec</div></center>
+<center><img src="/img/raidbanner/nezarec.webp" style="max-height: 142px; border: 4px solid #181a1b"></center>
+<br>
+
+
 <div class="my_red">Champions: NONE</div>
 <div class="my_red">BOSS ENCOUNTER - DPS PHASES</div>
 <div class="my_yellow">Close and medium combat distances</div>
@@ -164,5 +182,3 @@ permalink: /raid/rootofnightmares
 </div>
 <br>
 <br>
-
-<hr>
