@@ -4,10 +4,7 @@ permalink: /raid/lastwish
 ---
 
 <html>
-    <head>
-        <title>RAID - SETUP GUIDES</title>
-
-   <style>
+<style>
             .my_head
             {
                 font-family:    roboto, sans-serif;
@@ -24,14 +21,12 @@ permalink: /raid/lastwish
                 
             }
    </style>
-   </head>
-
 <body>
 
 <br>
 
 <br>
 <div class="my_body">
-<a href="/raid/">Back</a><br>
-<a href="/raid/"><img src="/img/raidbanner/raidpres.png"></a><img src="/img/raidbanner/lw_banner.png"><br><br>
+<a href="/raid">Back</a><br>
+<a href="/raid"><img src="/img/raidbanner/raidpres.png"></a><img src="https://www.bungie.net/common/destiny2_content/icons/8b1bfd1c1ce1cab51d23c78235a6e067.png"><br><br>
 <br>

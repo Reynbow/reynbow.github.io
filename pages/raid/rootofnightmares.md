@@ -4,10 +4,7 @@ permalink: /raid/rootofnightmares
 ---
 
 <html>
-    <head>
-        <title>RAID - SETUP GUIDES</title>
-
-   <style>
+<style>
             .my_head
             {
                 font-family:    roboto, sans-serif;
@@ -49,7 +46,6 @@ permalink: /raid/rootofnightmares
             }
 
    </style>
-   </head>
 
 <body>
 
