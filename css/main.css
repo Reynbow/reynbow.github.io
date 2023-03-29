@@ -35,9 +35,15 @@ a {
 }
 
 a:hover,
+/* 
 a:focus {
   color: {{ site.hover-col }};
 }
+*/
+a:focus {
+  outline: none;
+}
+
 blockquote {
   color: #808080;
   font-style: italic;
@@ -791,4 +797,30 @@ pre {
   color: #808080;
   font-style: italic;
   font-size: 16px;
+}
+
+/* hover images*/
+.image-swap-container {
+  position: relative;
+  display: inline-block;
+}
+
+.default-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hover-image {
+  display: none;
+  width: 100%;
+  height: auto;
+}
+
+.image-swap-container:hover .default-image {
+  display: none;
+}
+
+.image-swap-container:hover .hover-image {
+  display: block;
 }
