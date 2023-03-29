@@ -53,8 +53,8 @@ permalink: /raid/rootofnightmares
 
 <br>
 <div class="my_body">
-<a href="/raid">Back</a><br>
-<a href="/raid"><img src="/img/raidbanner/raidpres.png"></a><img src="/img/raidbanner/ron_banner.png"><br><br>
+<a href="/raid" style="display: inline-block; margin-left: 19px;">Back</a><br>
+<a href="/raid"><img src="https://www.bungie.net/common/destiny2_content/icons/b15e98bd1d74aa6d379017854b883814.png" style="max-height: 84px;"></a><img src="/img/raidbanner/ron_banner.png"><br><br>
 <br>
 
 

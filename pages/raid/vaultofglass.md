@@ -28,8 +28,7 @@ permalink: /raid/vaultofglass
 
 <br>
 
-<br>
 <div class="my_body">
-<a href="/raid">Back</a><br>
-<a href="/raid"><img src="/img/raidbanner/raidpres.png"></a><img src="https://www.bungie.net/common/destiny2_content/icons/8b1bfd1c1ce1cab51d23c78235a6e067.png"><br><br>
+<a href="/raid" style="display: inline-block; margin-left: 19px;">Back</a><br>
+<a href="/raid"><img src="https://www.bungie.net/common/destiny2_content/icons/d1069fdad148879f2eafd36ada596089.png" style="max-height: 84px;"></a><img src="/img/raidbanner/vog_banner.png"><br><br>
 <br>

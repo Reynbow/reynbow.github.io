@@ -25,8 +25,7 @@ permalink: /raid/lastwish
 
 <br>
 
-<br>
 <div class="my_body">
-<a href="/raid">Back</a><br>
-<a href="/raid"><img src="/img/raidbanner/raidpres.png"></a><img src="https://www.bungie.net/common/destiny2_content/icons/8b1bfd1c1ce1cab51d23c78235a6e067.png"><br><br>
+<a href="/raid" style="display: inline-block; margin-left: 19px;">Back</a><br>
+<a href="/raid"><img src="https://www.bungie.net/common/destiny2_content/icons/0eaef69c9530c604a9d4f8b1643549ba.png" style="max-height: 84px;"></a><img src="/img/raidbanner/lw_banner.png"><br><br>
 <br>
