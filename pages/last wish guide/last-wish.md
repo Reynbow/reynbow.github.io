@@ -2,16 +2,16 @@
 layout: page
 permalink: /last-wish
 ---
-<a href="https://idleanimation.com/"><img src="/img/banner_main.png" alt="Idle Animation"></a>
+<center><a href="https://idleanimation.com/"><img src="/img/banner_main.png" alt="Idle Animation"></a></center>
 
 <html>
     <head>
         <title>LAST WISH - RAID</title>
 
-   <style>
+<style>
             .my_head
             {
-                font-family:    Montserrat, sans-serif;
+                font-family:    roboto, sans-serif;
                 font-size:      25px;
                 font-weight:    bold;
             }
@@ -19,14 +19,12 @@ permalink: /last-wish
    <style>
             .my_body
             {
-                font-family:    Montserrat, sans-serif;
+                font-family:    roboto, sans-serif;
                 font-size:      20px;
                 font-weight:    light;
                 
             }
    </style>
-   </head>
-
 <body>
 
 <br>

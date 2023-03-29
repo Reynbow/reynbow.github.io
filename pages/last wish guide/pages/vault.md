@@ -3,30 +3,29 @@ layout: page
 permalink: /last-wish/vault/
 ---
 
-<a href="https://idleanimation.com/"><img src="/img/banner_main.png" alt="Idle Animation"></a>
+<center><a href="https://idleanimation.com/"><img src="/img/banner_main.png" alt="Idle Animation"></a></center>
 
 <html>
     <head>
-        <title>Vault Guide</title>
+        <title>LAST WISH - RAID</title>
 
 <style>
             .my_head
             {
-                font-family:    Montserrat, sans-serif;
-                font-size:      50px;
+                font-family:    roboto, sans-serif;
+                font-size:      25px;
                 font-weight:    bold;
             }
-        </style>
-<style>
-                  .my_body
-                  {
-                      font-family:    Montserrat, sans-serif;
-                      font-size:      20px;
-                      font-weight:    light;
-                  }
-        </style>
-</head>
-
+   </style>
+   <style>
+            .my_body
+            {
+                font-family:    roboto, sans-serif;
+                font-size:      20px;
+                font-weight:    light;
+                
+            }
+   </style>
 <body><br>
 <div class="my_head">The Vault</div><br>
 <div class="my_head"><h1>Preparation</h1></div><br>
