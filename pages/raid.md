@@ -38,4 +38,3 @@ permalink: /raid
 <a href="/raid/vowofdisciple"><img src="/img/raidbanner/vow.png"><img src="/img/raidbanner/vow_banner.png"></a><br><br>
 <a href="/raid/rootofnightmares"><img src="/img/raidbanner/ron.png"><img src="/img/raidbanner/ron_banner.png"></a><br><br>
 <br>
-<hr>

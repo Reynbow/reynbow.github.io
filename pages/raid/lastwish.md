@@ -35,4 +35,3 @@ permalink: /raid/lastwish
 <a href="/raid/">Back</a><br>
 <a href="/raid/"><img src="/img/raidbanner/raidpres.png"></a><img src="/img/raidbanner/lw_banner.png"><br><br>
 <br>
-<hr>

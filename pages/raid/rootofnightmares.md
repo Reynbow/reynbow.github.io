@@ -115,15 +115,12 @@ permalink: /raid/rootofnightmares
 <div style="height: 10px;"></div>
 <div class="my_body">Weapons:</div>
 <div class="my_body">
-    <div style="width:300px; height: 62px; position: relative;">
-        <div style="position: absolute; z-index: 7; left: 0;"><img src="https://www.bungie.net/common/destiny2_content/icons/097f8146229e7e8693a989952f44c843.jpg" style="max-height: 62px; border: 4px solid #181a1b"></div>
-        <div style="position: absolute; left: 75px; z-index: 6;"><img src="https://www.bungie.net/common/destiny2_content/icons/ddfe8daa6f2093efae32bd6f70ef36c5.jpg" style="max-height: 62px; border: 4px solid #181a1b"></div>
-        <div style="position: absolute; left: 90px; z-index: 5;"><img src="https://www.bungie.net/common/destiny2_content/icons/ddfe8daa6f2093efae32bd6f70ef36c5.jpg" style="max-height: 62px; border: 4px solid #181a1b"></div>
-        <div style="position: absolute; left: 105px; z-index: 4;"><img src="https://www.bungie.net/common/destiny2_content/icons/ddfe8daa6f2093efae32bd6f70ef36c5.jpg" style="max-height: 62px; border: 4px solid #181a1b"></div>
-        <div style="position: absolute; left: 120px; z-index: 3;"><img src="https://www.bungie.net/common/destiny2_content/icons/ddfe8daa6f2093efae32bd6f70ef36c5.jpg" style="max-height: 62px; border: 4px solid #181a1b"></div>
-        <div style="position: absolute; left: 135px; z-index: 2;"><img src="https://www.bungie.net/common/destiny2_content/icons/ddfe8daa6f2093efae32bd6f70ef36c5.jpg" style="max-height: 62px; border: 4px solid #181a1b"></div>
-        <div style="position: absolute; left: 150px; z-index: 1;"><img src="https://www.bungie.net/common/destiny2_content/icons/ddfe8daa6f2093efae32bd6f70ef36c5.jpg" style="max-height: 62px; border: 4px solid #181a1b"></div>
-    </div>
+    <div style="width:400px; height: 62px; position: relative;">
+        <div style="position: absolute; z-index: 7; left: 0;"><img src="https://www.bungie.net/common/destiny2_content/icons/e6c6190dc297e8e09c1a32b2dab9aae4.jpg" style="max-height: 62px; border: 4px solid #181a1b"> <img src="https://www.bungie.net/common/destiny2_content/icons/db73528358622aca68f3606390bd7f27.jpg" style="max-height: 62px; border: 4px solid #181a1b"> <img src="https://www.bungie.net/common/destiny2_content/icons/097f8146229e7e8693a989952f44c843.jpg" style="max-height: 62px; border: 4px solid #181a1b"> <img src="https://www.bungie.net/common/destiny2_content/icons/cc87fd3195aacc26707733a893de693e.jpg" style="max-height: 62px; border: 4px solid #181a1b"></div>
+        <div style="position: absolute; left: 268px; z-index: 6;"><img src="https://www.bungie.net/common/destiny2_content/icons/8bf8ab801542c1986967f343522991cd.jpg" style="max-height: 62px; border: 4px solid #181a1b"></div>
+        <div style="position: absolute; left: 283px; z-index: 5;"><img src="https://www.bungie.net/common/destiny2_content/icons/8bf8ab801542c1986967f343522991cd.jpg" style="max-height: 62px; border: 4px solid #181a1b"></div>
+        </div>
+        </div>
 </div>
 
 <div style="height: 10px;"></div>
@@ -153,16 +150,14 @@ permalink: /raid/rootofnightmares
 
 <div style="height: 10px;"></div>
 <div class="my_body">Weapons:</div>
+
 <div class="my_body">
-    <div style="width:300px; height: 62px; position: relative;">
-        <div style="position: absolute; z-index: 7; left: 0;"><img src="https://www.bungie.net/common/destiny2_content/icons/097f8146229e7e8693a989952f44c843.jpg" style="max-height: 62px; border: 4px solid #181a1b"></div>
-        <div style="position: absolute; left: 75px; z-index: 6;"><img src="https://www.bungie.net/common/destiny2_content/icons/ddfe8daa6f2093efae32bd6f70ef36c5.jpg" style="max-height: 62px; border: 4px solid #181a1b"></div>
-        <div style="position: absolute; left: 90px; z-index: 5;"><img src="https://www.bungie.net/common/destiny2_content/icons/ddfe8daa6f2093efae32bd6f70ef36c5.jpg" style="max-height: 62px; border: 4px solid #181a1b"></div>
-        <div style="position: absolute; left: 105px; z-index: 4;"><img src="https://www.bungie.net/common/destiny2_content/icons/ddfe8daa6f2093efae32bd6f70ef36c5.jpg" style="max-height: 62px; border: 4px solid #181a1b"></div>
-        <div style="position: absolute; left: 120px; z-index: 3;"><img src="https://www.bungie.net/common/destiny2_content/icons/ddfe8daa6f2093efae32bd6f70ef36c5.jpg" style="max-height: 62px; border: 4px solid #181a1b"></div>
-        <div style="position: absolute; left: 135px; z-index: 2;"><img src="https://www.bungie.net/common/destiny2_content/icons/ddfe8daa6f2093efae32bd6f70ef36c5.jpg" style="max-height: 62px; border: 4px solid #181a1b"></div>
-        <div style="position: absolute; left: 150px; z-index: 1;"><img src="https://www.bungie.net/common/destiny2_content/icons/ddfe8daa6f2093efae32bd6f70ef36c5.jpg" style="max-height: 62px; border: 4px solid #181a1b"></div>
-    </div>
+    <div style="width:400px; height: 62px; position: relative;">
+        <div style="position: absolute; z-index: 7; left: 0;"><img src="https://www.bungie.net/common/destiny2_content/icons/e6c6190dc297e8e09c1a32b2dab9aae4.jpg" style="max-height: 62px; border: 4px solid #181a1b"> <img src="https://www.bungie.net/common/destiny2_content/icons/db73528358622aca68f3606390bd7f27.jpg" style="max-height: 62px; border: 4px solid #181a1b"> <img src="https://www.bungie.net/common/destiny2_content/icons/097f8146229e7e8693a989952f44c843.jpg" style="max-height: 62px; border: 4px solid #181a1b"> <img src="https://www.bungie.net/common/destiny2_content/icons/cc87fd3195aacc26707733a893de693e.jpg" style="max-height: 62px; border: 4px solid #181a1b"></div>
+        <div style="position: absolute; left: 268px; z-index: 6;"><img src="https://www.bungie.net/common/destiny2_content/icons/8bf8ab801542c1986967f343522991cd.jpg" style="max-height: 62px; border: 4px solid #181a1b"></div>
+        <div style="position: absolute; left: 283px; z-index: 5;"><img src="https://www.bungie.net/common/destiny2_content/icons/8bf8ab801542c1986967f343522991cd.jpg" style="max-height: 62px; border: 4px solid #181a1b"></div>
+        </div>
+        </div>
 </div>
 
 <div style="height: 10px;"></div>

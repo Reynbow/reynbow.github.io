@@ -35,4 +35,3 @@ permalink: /raid/deepstonecrypt
 <a href="/raid/">Back</a><br>
 <a href="/raid/"><img src="/img/raidbanner/raidpres.png"></a><img src="/img/raidbanner/dsc_banner.png"><br><br>
 <br>
-<hr>

@@ -35,4 +35,3 @@ permalink: /raid/vowofdisciple
 <a href="/raid/">Back</a><br>
 <a href="/raid/"><img src="/img/raidbanner/raidpres.png"></a><img src="/img/raidbanner/vow_banner.png"><br><br>
 <br>
-<hr>
