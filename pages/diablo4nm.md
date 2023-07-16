@@ -59,7 +59,7 @@ permalink: /diablo4nm
 
 <h1>Diablo 4 Nightmare Dungeon Calculator</h1>
 <div id="diablo4nm" class="container">
-  <p>This calculator helps you to determine the Tier Level and Enemy Level in the Diablo 4 <br>Nightmare Dungeon based on your character level. Given that the optimal farming<br>method for exp is to kill enemies that are 3 levels above you.<br>Pushing higher will grant greater EXP, but take longer to clear, making it less optimal.<br>Though if you can keep up speed it is better to push higher. This should be the minimum.<br><br>Keep in mind that this calculation is for World Tier 4. If you are still doing World Tier 3, you will need to do one Tier higher than the result below.<br><br></p>
+  <p>This calculator helps you to determine the Tier Level and Enemy Level in the Diablo 4 <br>Nightmare Dungeon based on your character level. Given that the optimal farming<br>method for exp is to kill enemies that are 3 levels above you.<br>Pushing higher will grant greater EXP, but take longer to clear, making it less optimal.<br>Though if you can keep up speed it is better to push higher. This should be the minimum.<br><br>Keep in mind that this calculation is for World Tier 4. If you are still doing World Tier 3,<br>you will need to do one Tier higher than the result below.<br><br></p>
   
   <div class="output-section">
     <label for="inputNum">Character Level</label>
