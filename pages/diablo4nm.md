@@ -80,12 +80,19 @@ permalink: /diablo4nm
 <script>
   document.getElementById('inputNum').addEventListener('input', function (e) {
     const inputValue = Number(e.target.value);
-    const tempValue = inputValue + 3;
+    const tempValue = inputValue + 1;  // changed from +3 to +1
 
-    const firstOutput = tempValue < 54 ? "Invalid level" : tempValue - 54;
+    let bonusPercentage = 0;
+    for (let i = 0; i < 10 && i < tempValue; i++) {
+      bonusPercentage += 1.5;
+    }
+
+    // this will keep outputting the bonus percentage and level with increased percentage
+    const firstOutput = bonusPercentage > 0 ? `${bonusPercentage}%` : "Invalid level";
     const secondOutput = tempValue;
-    
+
     document.getElementById('outputNum1').value = firstOutput;
     document.getElementById('outputNum2').value = secondOutput;
   });
 </script>
+
