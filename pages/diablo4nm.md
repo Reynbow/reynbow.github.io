@@ -90,7 +90,7 @@ permalink: /diablo4nm
       const tempValue = inputValue + i;
 
       let bonusPercentage = i * 1.5;
-      let tierLevel = tempValue - 54 + 21;
+      let tierLevel = tempValue - 54;
 
       // this will keep outputting the bonus percentage and level with increased percentage
       const bonusOutput = tempValue > 0 ? `${bonusPercentage}%` : "Invalid level";
