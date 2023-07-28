@@ -93,14 +93,14 @@ permalink: /diablo4nm
       let tierLevel = tempValue - 54;
 
       // this will keep outputting the bonus percentage and level with increased percentage
-      const bonusOutput = tempValue > 0 ? `${bonusPercentage}%` : "Invalid level";
+      const bonusOutput = tempValue > 0 ? `<b>${bonusPercentage}%</b>` : "Invalid level";
       
       let tierOutput;
       if (tempValue > 54) {
         if (tierLevel < 21) {
-          tierOutput = "N/A";
+          tierOutput = `Tier Level: N/A, Monster Level: <b>${tempValue}</b>`;
         } else {
-          tierOutput = `Tier Level: ${tierLevel}, Monster Level: ${tempValue}`;
+          tierOutput = `Tier Level: <b>${tierLevel}</b>, Monster Level: <b>${tempValue}</b>`;
         }
       } else {
         tierOutput = "Invalid tier level";
@@ -109,7 +109,7 @@ permalink: /diablo4nm
       const bonusField = document.createElement('div');
       bonusField.className = 'bonus-output';
 
-      bonusField.innerHTML = `Level +${i} bonus: <b>${bonusOutput}</b><br>${tierOutput}`;
+      bonusField.innerHTML = `Level +${i} bonus: ${bonusOutput}<br>${tierOutput}`;
 
       if (i <= 5) {
         bonusColumn1.appendChild(bonusField);
