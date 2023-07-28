@@ -13,7 +13,7 @@ permalink: /diablo4nm
   }
 
   #diablo4nm input[type="number"], 
-  #diablo4nm .output-box {
+  #diablo4nm .bonus-output {
     width: 200px;
     background-color: #141824;
     color: #ffffff;
@@ -37,16 +37,6 @@ permalink: /diablo4nm
     margin: 2%;
   }
 
-  #diablo4nm .output-box {
-    color: #ffffff;
-    background-color: #262a3e;
-    border: 2px solid #141824;
-    padding: 10px;
-    appearance: textfield;
-    -moz-appearance: textfield;
-    -webkit-appearance: textfield;
-  }
-
   #diablo4nm .container {
     display: flex;
     flex-direction: column;
@@ -59,40 +49,42 @@ permalink: /diablo4nm
 
 <h1>Diablo 4 Nightmare Dungeon Calculator</h1>
 <div id="diablo4nm" class="container">
-  <p>This calculator helps you to determine the Tier Level and Enemy Level in the Diablo 4 <br>Nightmare Dungeon based on your character level. Given that the optimal farming<br>method for exp is to kill enemies that are 3 levels above you.<br>Pushing higher will grant greater EXP, but take longer to clear, making it less optimal.<br>Though if you can keep up speed it is better to push higher. This should be the minimum.<br><br>Keep in mind that this calculation is for World Tier 4. If you are still doing World Tier 3,<br>you will need to do one Tier higher than the result below.<br><br></p>
+  <p>This calculator helps you to determine the Bonus Percentage and Dungeon Tier based on your character level.<br>Keep in mind that this calculation is for Post-Season of the Malignant.<br><br></p>
   
   <div class="output-section">
     <label for="inputNum">Character Level</label>
     <input type="number" id="inputNum" name="inputNum">
   </div>
 
-  <div class="output-section">
-    <label for="outputNum1">Tier Level</label>
-    <input type="text" id="outputNum1" class="output-box" readonly>
-  </div>
-
-  <div class="output-section">
-    <label for="outputNum2">Enemy Level</label>
-    <input type="text" id="outputNum2" class="output-box" readonly>
-  </div>
+  <!-- Add this new section for bonus percentage and tier level -->
+  <div id="bonusSection"></div>
 </div>
 
 <script>
   document.getElementById('inputNum').addEventListener('input', function (e) {
     const inputValue = Number(e.target.value);
-    const tempValue = inputValue + 1;  // changed from +3 to +1
 
-    let bonusPercentage = 0;
-    for (let i = 0; i < 10 && i < tempValue; i++) {
-      bonusPercentage += 1.5;
+    const bonusSection = document.getElementById('bonusSection');
+
+    // clear previous output
+    bonusSection.innerHTML = '';
+
+    for (let i = 1; i <= 10; i++) {
+      const tempValue = inputValue + i;
+
+      let bonusPercentage = i * 1.5;
+      let tierLevel = tempValue - 54 + 21;
+
+      // this will keep outputting the bonus percentage and level with increased percentage
+      const bonusOutput = tempValue > 0 ? `${bonusPercentage}%` : "Invalid level";
+      const tierOutput = tempValue > 54 ? `Tier Level: ${tierLevel}, Monster Level: ${tempValue}` : "Invalid tier level";
+
+      const bonusField = document.createElement('div');
+      bonusField.className = 'bonus-output';
+
+      bonusField.innerHTML = `Level +${i} bonus: <b>${bonusOutput}</b><br>${tierOutput}`;
+
+      bonusSection.appendChild(bonusField);
     }
-
-    // this will keep outputting the bonus percentage and level with increased percentage
-    const firstOutput = bonusPercentage > 0 ? `${bonusPercentage}%` : "Invalid level";
-    const secondOutput = tempValue;
-
-    document.getElementById('outputNum1').value = firstOutput;
-    document.getElementById('outputNum2').value = secondOutput;
   });
 </script>
-
