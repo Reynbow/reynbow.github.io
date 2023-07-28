@@ -41,15 +41,27 @@ permalink: /diablo4nm
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
-    width: 100%;
+    width: 80%;
     margin: auto;
+    margin-left: 198px;
+  }
+
+  #diablo4nm .columns {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  #diablo4nm .column {
+    width: 30%;
+    margin: 0 25px;
+    box-sizing: border-box;
   }
 </style>
 
 <h1>Diablo 4 Nightmare Dungeon Calculator</h1>
 <div id="diablo4nm" class="container">
-  <p>This calculator helps you to determine the Bonus Percentage and Dungeon Tier based on your character level.<br>Keep in mind that this calculation is for Post-Season of the Malignant.<br><br></p>
+  <p>This calculator helps you to determine the Bonus Percentage and Dungeon Tier based<br>on your character level.<br>Keep in mind that this is for Post-Season of the Malignant and World Tier 4 only.<br><br></p>
   
   <div class="output-section">
     <label for="inputNum">Character Level</label>
@@ -57,17 +69,22 @@ permalink: /diablo4nm
   </div>
 
   <!-- Add this new section for bonus percentage and tier level -->
-  <div id="bonusSection"></div>
+  <div id="bonusSection" class="columns">
+    <div id="bonusColumn1" class="column"></div>
+    <div id="bonusColumn2" class="column"></div>
+  </div>
 </div>
 
 <script>
   document.getElementById('inputNum').addEventListener('input', function (e) {
     const inputValue = Number(e.target.value);
 
-    const bonusSection = document.getElementById('bonusSection');
+    const bonusColumn1 = document.getElementById('bonusColumn1');
+    const bonusColumn2 = document.getElementById('bonusColumn2');
 
     // clear previous output
-    bonusSection.innerHTML = '';
+    bonusColumn1.innerHTML = '';
+    bonusColumn2.innerHTML = '';
 
     for (let i = 1; i <= 10; i++) {
       const tempValue = inputValue + i;
@@ -84,7 +101,11 @@ permalink: /diablo4nm
 
       bonusField.innerHTML = `Level +${i} bonus: <b>${bonusOutput}</b><br>${tierOutput}`;
 
-      bonusSection.appendChild(bonusField);
+      if (i <= 5) {
+        bonusColumn1.appendChild(bonusField);
+      } else {
+        bonusColumn2.appendChild(bonusField);
+      }
     }
   });
 </script>
