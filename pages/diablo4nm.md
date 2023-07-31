@@ -72,7 +72,7 @@ permalink: /diablo4nm
 
 <h1>Diablo 4 Nightmare Dungeon Calculator</h1>
 <div id="diablo4nm" class="container">
-  <p>This calculator helps you to determine the Bonus Percentage and Dungeon Tier based<br>on your character level.<br>Keep in mind that this is for Season of the Malignant.<br><br></p>
+  <p>This calculator helps you to determine the Bonus Percentage and Dungeon Tier based<br>on your character level.<br><br></p>
   
   <div class="output-section">
     <label for="inputNum">Character Level</label>
