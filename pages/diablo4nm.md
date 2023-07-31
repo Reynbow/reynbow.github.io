@@ -13,16 +13,18 @@ permalink: /diablo4nm
   }
 
   #diablo4nm input[type="number"], 
+
   #diablo4nm .bonus-output {
-    width: 200px;
-    background-color: #141824;
-    color: #ffffff;
-    border: none;
-    padding: 10px;
-    appearance: textfield;
-    -moz-appearance: textfield;
-    -webkit-appearance: textfield;
-  }
+  width: 200px;
+  background-color: #141824;
+  color: #ffffff;
+  border: none;
+  padding: 10px;
+  appearance: textfield;
+  -moz-appearance: textfield;
+  -webkit-appearance: textfield;
+  margin-bottom: 8px;
+}
 
   #diablo4nm label, #diablo4nm p {
     color: #ffffff;
@@ -37,14 +39,16 @@ permalink: /diablo4nm
     margin: 2%;
   }
 
-  #diablo4nm .container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 80%;
-    margin: auto;
-    margin-left: 198px;
-  }
+#diablo4nm .container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 80%;
+  margin: auto;
+  margin-left: 198px;
+  overflow: auto;
+}
+
 
   #diablo4nm .columns {
     display: flex;
@@ -57,65 +61,86 @@ permalink: /diablo4nm
     margin: 0 25px;
     box-sizing: border-box;
   }
+
+  #diablo4nm .bonus-output::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 </style>
 
 <h1>Diablo 4 Nightmare Dungeon Calculator</h1>
 <div id="diablo4nm" class="container">
-  <p>This calculator helps you to determine the Bonus Percentage and Dungeon Tier based<br>on your character level.<br>Keep in mind that this is for Season of the Malignant and World Tier 4 only.<br><br></p>
+  <p>This calculator helps you to determine the Bonus Percentage and Dungeon Tier based<br>on your character level.<br>Keep in mind that this is for Season of the Malignant.<br><br></p>
   
   <div class="output-section">
     <label for="inputNum">Character Level</label>
     <input type="number" id="inputNum" name="inputNum">
   </div>
 
-  <!-- Add this new section for bonus percentage and tier level -->
   <div id="bonusSection" class="columns">
-    <div id="bonusColumn1" class="column"></div>
-    <div id="bonusColumn2" class="column"></div>
+  <div id="bonusColumn1" class="column"></div>
+  <div id="bonusColumn2" class="column"></div>
   </div>
 </div>
 
 <script>
-  document.getElementById('inputNum').addEventListener('input', function (e) {
-    const inputValue = Number(e.target.value);
+document.getElementById('inputNum').addEventListener('input', function (e) {
+  const inputValue = Number(e.target.value);
 
-    const bonusColumn1 = document.getElementById('bonusColumn1');
-    const bonusColumn2 = document.getElementById('bonusColumn2');
+  const bonusColumn1 = document.getElementById('bonusColumn1');
+  const bonusColumn2 = document.getElementById('bonusColumn2');
 
-    // clear previous output
-    bonusColumn1.innerHTML = '';
-    bonusColumn2.innerHTML = '';
+  // clear previous output
+  bonusColumn1.innerHTML = '';
+  bonusColumn2.innerHTML = '';
 
-    for (let i = 1; i <= 10; i++) {
-      const tempValue = inputValue + i;
+  for (let i = 1; i <= 10; i++) {
+    const tempValue = inputValue + i;
 
-      let bonusPercentage = i * 1.5;
-      let tierLevel = tempValue - 54;
+    let bonusPercentage = i * 1.5;
+    let tierLevel = tempValue - 54;
+    let monsterLevel = tempValue;
 
-      // this will keep outputting the bonus percentage and level with increased percentage
-      const bonusOutput = tempValue > 0 ? `<b>${bonusPercentage}%</b>` : "Invalid level";
-      
-      let tierOutput;
-      if (tempValue > 54) {
-        if (tierLevel < 21) {
-          tierOutput = `Tier Level: N/A, Monster Level: <b>${tempValue}</b>`;
-        } else {
-          tierOutput = `Tier Level: <b>${tierLevel}</b>, Monster Level: <b>${tempValue}</b>`;
-        }
+    const bonusOutput = tempValue > 0 ? `<span class="category">Bonus</span><span class="number"><b>${bonusPercentage}%</b></span>` : "Invalid level";
+    
+    let tierOutput;
+    if (tempValue > 54) {
+      if (tierLevel < 21) {
+        monsterLevel--; // Adjust monster level to be one lower
+        tierLevel = tierLevel < 1 ? "NA" : tierLevel;
       } else {
-        tierOutput = "Invalid tier level";
+        tierLevel = tierLevel < 1 ? "NA" : tierLevel;
       }
-
-      const bonusField = document.createElement('div');
-      bonusField.className = 'bonus-output';
-
-      bonusField.innerHTML = `Level +${i} bonus: ${bonusOutput}<br>${tierOutput}`;
-
-      if (i <= 5) {
-        bonusColumn1.appendChild(bonusField);
-      } else {
-        bonusColumn2.appendChild(bonusField);
-      }
+    } else {
+      tierLevel = "NA";
+      monsterLevel = "NA";
     }
-  });
+
+    const bonusField = document.createElement('div');
+    bonusField.className = 'bonus-output';
+
+    bonusField.innerHTML = `Level +${i}: ${bonusOutput}<br><span class="category">Tier Level:</span> <span class="number"><b>${tierLevel}</b></span> <span class="category">Monster Level:</span> <span class="number"><b>${monsterLevel}</b></span>`;
+
+    if (i <= 5) {
+      bonusColumn1.appendChild(bonusField);
+    } else {
+      bonusColumn2.appendChild(bonusField);
+    }
+  }
+});
 </script>
+
+<style>
+.category {
+  float: left;
+}
+.number {
+  float: right;
+  clear: right;
+}
+.bonus-output {
+  clear: both;
+}
+</style>
