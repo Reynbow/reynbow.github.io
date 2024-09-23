@@ -25,14 +25,49 @@ layout: page
                       font-weight:    light;
                   }
         </style>
-    </head>
+<body><br>
+    <div class="my_head">Discord and Clan</div>
+    <div class="my_body">
+        You can join the Discord <a href="https://idleanimation.com/discord">here.</a><br><br>
+        Join us in the Destiny 2 clan <a href="https://idleanimation.com/destiny-clan">here.</a><br><br>
+        Destiny 2 currently has <span id="player-count">loading...</span> players online.<br><br>
+        The clan is functionally no longer active while we either wait for them to fix their shit, or something better to come out. Marathon maybe? Fuck knows...
+    </div>
 
-    <body><br>
-        <div class="my_head">Discord and Clan</div>
-        <div class="my_body">You can join the Discord <a href="https://idleanimation.com/discord">here.</a><br><br>
-	Join us in the Destiny 2 clan <a href="https://idleanimation.com/destiny-clan">here.</a><br><br>
-          Destiny 2 is basically a dead game at this point. <br>The clan is functionally no longer active while we either wait for them to fix their shit, or something better to come out. Marathon maybe? Fuck knows...</div>
-    </body>
+    <!-- JavaScript Code -->
+    <script>
+      // Function to fetch player count using AllOrigins CORS proxy
+      function fetchPlayerCount() {
+        // The Steam API endpoint for current players
+        const apiURL = 'https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=1085660';
+
+        // Using AllOrigins to bypass CORS restrictions
+        fetch('https://api.allorigins.win/get?url=' + encodeURIComponent(apiURL))
+          .then(response => {
+            if (response.ok) return response.json();
+            else throw new Error('Network response was not ok.');
+          })
+          .then(data => {
+            // The data is returned as a JSON string in the 'contents' property
+            const parsedData = JSON.parse(data.contents);
+            const playerCount = parsedData.response.player_count;
+
+            // Format the player count with commas
+            const formattedCount = playerCount.toLocaleString();
+
+            // Update the HTML content
+            document.getElementById('player-count').innerText = formattedCount;
+          })
+          .catch(error => {
+            console.error('Error fetching player count:', error);
+            document.getElementById('player-count').innerText = 'unavailable';
+          });
+      }
+
+      // Call the function when the page loads
+      window.addEventListener('DOMContentLoaded', fetchPlayerCount);
+    </script>
+</body>
 </html>
 
 <div class="posts-list">
