@@ -36,6 +36,7 @@ layout: page
         Warframe currently has <a href="https://steamdb.info/app/230410/charts/"><strong><span id="player-count-warframe">loading...</span></strong></a> players online.<br>
         Call of Duty currently has <a href="https://steamdb.info/app/1938090/charts/"><strong><span id="player-count-cod">loading...</span></strong></a> players online.<br>
         Apex Legends currently has <a href="https://steamdb.info/app/1172470/charts/"><strong><span id="player-count-apex">loading...</span></strong></a> players online.<br>
+        Counter-Strike 2 currently has <a href="https://steamdb.info/app/730/charts/"><strong><span id="player-count-cs2">loading...</span></strong></a> players online.<br>
         Baldur's Gate 3 currently has <a href="https://steamdb.info/app/1086940/charts/"><strong><span id="player-count-bg3">loading...</span></strong></a> players online.<br>
         Dead by Daylight currently has <a href="https://steamdb.info/app/381210/charts/"><strong><span id="player-count-dbd">loading...</span></strong></a> players online.<br>
     </div>
@@ -81,7 +82,7 @@ layout: page
 
         function fetchGamePlayerCount(game) {
           return new Promise((resolve) => {
-            const apiURL = https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=${game.appid};
+            const apiURL = `https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=${game.appid}`;
 
             fetch('https://api.allorigins.win/get?url=' + encodeURIComponent(apiURL))
               .then(response => {
@@ -96,7 +97,7 @@ layout: page
                 resolve();
               })
               .catch(error => {
-                console.error(Error fetching player count for ${game.name}:, error);
+                console.error(`Error fetching player count for ${game.name}:`, error);
                 document.getElementById(game.elementId).innerText = 'unavailable';
                 resolve();
               });
@@ -114,10 +115,10 @@ layout: page
 
         fetchAllPlayerCounts();
       }
+
       window.addEventListener('DOMContentLoaded', fetchPlayerCounts);
     </script>
 </body>
-
 </html>
 
 <div class="posts-list">
