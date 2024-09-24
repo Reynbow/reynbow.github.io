@@ -39,10 +39,7 @@ layout: page
         Baldur's Gate 3 currently has <a href="https://steamdb.info/app/1086940/charts/"><strong><span id="player-count-bg3">loading...</span></strong></a> players online.<br>
         Dead by Daylight currently has <a href="https://steamdb.info/app/381210/charts/"><strong><span id="player-count-dbd">loading...</span></strong></a> players online.<br>
     </div>
-
-    <!-- JavaScript Code -->
     <script>
-      // Function to fetch player counts using AllOrigins CORS proxy
       function fetchPlayerCounts() {
         const games = [
           {
@@ -82,26 +79,19 @@ layout: page
           }
         ];
 
-        // Function to fetch player count for a single game
         function fetchGamePlayerCount(game) {
           return new Promise((resolve) => {
             const apiURL = https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=${game.appid};
 
-            // Using AllOrigins to bypass CORS restrictions
             fetch('https://api.allorigins.win/get?url=' + encodeURIComponent(apiURL))
               .then(response => {
                 if (response.ok) return response.json();
                 else throw new Error('Network response was not ok.');
               })
               .then(data => {
-                // The data is returned as a JSON string in the 'contents' property
                 const parsedData = JSON.parse(data.contents);
                 const playerCount = parsedData.response.player_count;
-
-                // Format the player count with commas
                 const formattedCount = playerCount.toLocaleString();
-
-                // Update the HTML content
                 document.getElementById(game.elementId).innerText = formattedCount;
                 resolve();
               })
@@ -113,21 +103,17 @@ layout: page
           });
         }
 
-        // Function to fetch all player counts sequentially with delay
         async function fetchAllPlayerCounts() {
           const delayBetweenRequests = 500; // in milliseconds
 
           for (const game of games) {
             await fetchGamePlayerCount(game);
-            // Delay before the next request
             await new Promise(resolve => setTimeout(resolve, delayBetweenRequests));
           }
         }
 
         fetchAllPlayerCounts();
       }
-
-      // Call the function when the page loads
       window.addEventListener('DOMContentLoaded', fetchPlayerCounts);
     </script>
 </body>
