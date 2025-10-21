@@ -1,0 +1,89 @@
+/* Custom site styles extracted from inline page styles */
+.my_head {
+  font-family: roboto, sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.my_body {
+  font-family: roboto, sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+/* Player stats cards */
+.player-stats-section {
+  margin-top: 24px;
+}
+
+.player-stats-section .section-title {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.stat-card {
+  background: #1f2332;
+  border: 1px solid #2b2f44;
+  border-radius: 8px;
+  padding: 14px 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.stat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stat-title {
+  font-size: 16px;
+  margin: 0;
+}
+
+.stat-count {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.stat-sub {
+  color: #a8aecb;
+  font-size: 12px;
+}
+
+.stat-bar {
+  margin-top: 10px;
+  height: 8px;
+  background: #2b2f44;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.stat-bar .fill {
+  height: 100%;
+  width: 0%;
+  background: #EF466F; /* accent */
+  transition: width 600ms ease;
+}
+
+.stat-footer {
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stat-link {
+  color: #EF466F;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.stat-link:hover { text-decoration: underline; }
+
+.muted { color: #9aa0bd; font-size: 12px; }

@@ -1,13 +1,15 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-gem "github-pages"
+gem "github-pages", group: :jekyll_plugins
+gem "jekyll-paginate", group: :jekyll_plugins
+gem "jekyll-redirect-from", group: :jekyll_plugins
 
-# enable tzinfo-data for local build
-# gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
-gem 'jekyll-paginate'
+# Ruby 3+ needs webrick for `jekyll serve`
+gem "webrick", "~> 1.8"
 
-gem 'jekyll-redirect-from'
-
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
-
-gem 'webrick'
+# Windows helpers
+platforms :mingw, :x64_mingw, :mswin do
+  gem "tzinfo", ">= 1", "< 3"
+  gem "tzinfo-data"
+  gem "wdm", "~> 0.1"
+end

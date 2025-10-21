@@ -51,6 +51,5 @@ permalink: /arg4
 
 <br>
 <a href="/arg1/">Back</a><br><br>
-<img src="/img/arg/"><br><br>
 <a href="/arg2/">Continue...</a><br><br>
 <br>

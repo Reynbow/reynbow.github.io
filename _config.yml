@@ -22,10 +22,10 @@ description: Australian Gamers
 navbar-links:
   Home: "index"
 #  ARG: "arg"
-  Raid Setups: "raid"
   About: "about"
   Contact: "contact"
   Resources:
+    - Raid Setups: "raid"
     - Last Wish Plates: "last-wish-plates"
     - Last Wish Guide: "last-wish"
     - Zero Hour: "optimus"

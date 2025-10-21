@@ -2,10 +2,34 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="{{ site.page-col }}">
+  <meta name="color-scheme" content="dark">
+
+  <!-- Preconnect for faster font loading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <title>{% if page.use-site-title %}{{ site.title }} {{ site.title-separator }} {{ site.description }}{% elsif page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
 
   <meta name="author" content="{{ site.author.name }}" />
+
+  <style>
+    /* Critical CSS to prevent flashes and layout shifts */
+    html, body { background-color: {{ site.page-col }}; }
+    body {
+      color: #FFFFFF;
+      font-family: 'Lora', 'Times New Roman', serif;
+      font-size: 18px;
+    }
+    h1,h2,h3,h4,h5,h6 {
+      font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-weight: 800;
+    }
+    a { color: {{ site.link-col }}; }
+    .navbar, .navbar-default, .navbar-inverse { background-color: {{ site.navbar-col }} !important; }
+    .intro-header { background-color: {{ site.page-col }}; }
+    .main-content { padding-top: 80px; }
+  </style>
 
   {% if page.subtitle %}
   <meta name="description" content="{{ page.subtitle }}">
@@ -31,7 +55,7 @@
 
   {% if layout.common-googlefonts %}
     {% for font in layout.common-googlefonts %}
-      <link rel="stylesheet" href="//fonts.googleapis.com/css?family={{ font }}" />
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family={{ font }}&display=swap" />
     {% endfor %}
   {% endif %}
 
@@ -49,7 +73,7 @@
 
   {% if page.googlefonts %}
     {% for font in page.googlefonts %}
-      <link rel="stylesheet" href="//fonts.googleapis.com/css?family={{ font }}" />
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family={{ font }}&display=swap" />
     {% endfor %}
   {% endif %}
 
