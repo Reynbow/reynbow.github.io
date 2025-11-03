@@ -6,7 +6,7 @@ title: Idle Animation
 # Short description of your site
 description: Australian Gamers
 
-# --- Local development options ---
+# --- Local development options --- #
 # If your website is hosted locally rather than on GitHub, then you need to uncomment the next two parameters to set the url and baseurl
 # *** If you're not sure what this mean, then leave this section as it is. Only modify the url and baseurl if you know what you're doing!***
 
@@ -22,8 +22,8 @@ description: Australian Gamers
 navbar-links:
   Home: "index"
 #  ARG: "arg"
-  About: "about"
-  Contact: "contact"
+#  About: "about"
+#  Contact: "contact"
   Resources:
     - Raid Setups: "raid"
     - Last Wish Plates: "last-wish-plates"

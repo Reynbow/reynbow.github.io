@@ -2,6 +2,7 @@
 layout: page
 css:
   - "/css/custom.css"
+published: false
 ---
 
 <center><a href="https://idleanimation.com/"><img src="/img/banner_main.png" alt="Idle Animation"></a></center>
