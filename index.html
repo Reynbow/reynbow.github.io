@@ -22,58 +22,215 @@ css:
 </div>
 
 <script>
+  // Storage key for historical data
+  const STORAGE_KEY = 'steam_player_history';
+  const HOURS_TO_SHOW = 24;
+
+  function getHistoricalData() {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      return stored ? JSON.parse(stored) : {};
+    } catch {
+      return {};
+    }
+  }
+
+  function saveHistoricalData(data) {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    } catch {}
+  }
+
+  function updateHistory(gameId, count) {
+    const history = getHistoricalData();
+    const now = new Date();
+    
+    if (!history[gameId]) {
+      history[gameId] = {};
+    }
+    
+    // Store hourly data points (one per hour) for 24-hour historical view
+    const hourKey = now.toISOString().slice(0, 13); // YYYY-MM-DDTHH format
+    
+    // Store hourly snapshot from API - update if this hour doesn't exist or is older
+    const existing = history[gameId][hourKey];
+    const shouldUpdate = !existing || 
+                        (now.getTime() - existing.timestamp) > 30 * 60 * 1000; // Update if older than 30 min in same hour
+    
+    if (shouldUpdate) {
+      // Store hourly snapshot from API call
+      history[gameId][hourKey] = {
+        count: count,
+        timestamp: now.getTime()
+      };
+    }
+    
+    // Clean up old data (keep only last 48 hours to maintain 24-hour view)
+    const cutoff = now.getTime() - (48 * 60 * 60 * 1000);
+    Object.keys(history[gameId]).forEach(key => {
+      if (history[gameId][key].timestamp < cutoff) {
+        delete history[gameId][key];
+      }
+    });
+    
+    saveHistoricalData(history);
+  }
+
+  function getHourlyData(gameId) {
+    const history = getHistoricalData();
+    if (!history[gameId]) return [];
+    
+    const hourlyData = [];
+    const now = new Date();
+    
+    // Get data for last 24 hours from stored historical data
+    // Start from current hour going back 24 hours
+    for (let i = 0; i < HOURS_TO_SHOW; i++) {
+      const hourTime = new Date(now);
+      hourTime.setHours(hourTime.getHours() - i);
+      hourTime.setMinutes(0, 0, 0);
+      hourTime.setSeconds(0, 0);
+      const hourKey = hourTime.toISOString().slice(0, 13); // YYYY-MM-DDTHH format
+      
+      // Get stored hourly data from previous API calls
+      const dataPoint = history[gameId][hourKey];
+      
+      hourlyData.push({
+        time: hourTime,
+        count: dataPoint ? dataPoint.count : 0,
+        hasData: !!dataPoint
+      });
+    }
+    
+    // Reverse to show oldest to newest (left to right on chart)
+    return hourlyData.reverse();
+  }
+
+  function formatNumber(num) {
+    if (num >= 1000000) {
+      return (num / 1000000).toFixed(1) + 'M';
+    } else if (num >= 1000) {
+      return (num / 1000).toFixed(1) + 'K';
+    }
+    return num.toLocaleString();
+  }
+
+
+
   function initPlayerStats() {
     const games = [
-      { id: 'destiny2', name: 'Destiny 2', appid: '1085660', url: 'https://steamdb.info/app/1085660/charts/' },
-      { id: 'warframe', name: 'Warframe', appid: '230410', url: 'https://steamdb.info/app/230410/charts/' },
-      { id: 'bf6', name: 'Battlefield 6', appid: '2807960', url: 'https://steamdb.info/app/2807960/charts/' },
-      { id: 'apex', name: 'Apex Legends', appid: '1172470', url: 'https://steamdb.info/app/1172470/charts/' },
-      { id: 'arcraiders', name: "Arc Raiders", appid: '1808500', url: 'https://steamdb.info/app/1808500/charts/' },
-      { id: 'dbd', name: 'Dead by Daylight', appid: '381210', url: 'https://steamdb.info/app/381210/charts/' }
+      { id: 'destiny2', name: 'DESTINY 2', appid: '1085660', url: 'https://steamdb.info/app/1085660/charts/' },
+      { id: 'warframe', name: 'WARFRAME', appid: '230410', url: 'https://steamdb.info/app/230410/charts/' },
+      { id: 'bf6', name: 'BATTLEFIELD 6', appid: '2807960', url: 'https://steamdb.info/app/2807960/charts/' },
+      { id: 'apex', name: 'APEX LEGENDS', appid: '1172470', url: 'https://steamdb.info/app/1172470/charts/' },
+      { id: 'arcraiders', name: "ARC RAIDERS", appid: '1808500', url: 'https://steamdb.info/app/1808500/charts/' },
+      { id: 'dbd', name: 'DEAD BY DAYLIGHT', appid: '381210', url: 'https://steamdb.info/app/381210/charts/' }
     ];
 
     const grid = document.getElementById('player-stats-grid');
+    if (!grid) {
+      console.error('Player stats grid not found');
+      return;
+    }
     grid.innerHTML = games.map(g => `
       <div class="stat-card" id="card-${g.id}">
         <div class="stat-header">
-          <h4 class="stat-title">${g.name}</h4>
-          <div class="stat-count" id="count-${g.id}">—</div>
+          <div class="stat-title-container">
+            <span class="stat-title">${g.name}</span>
+          </div>
         </div>
-        <div class="stat-bar"><div class="fill" id="bar-${g.id}"></div></div>
-        <div class="stat-footer">
+        <div class="stat-value-container">
+          <span class="stat-value" id="value-${g.id}">—</span>
+        </div>
+        <div class="stat-bar-container">
+          <div class="stat-bar-fill" id="bar-${g.id}" style="width: 0%"></div>
+        </div>
+        <div class="stat-footer-new">
           <a class="stat-link" href="${g.url}" target="_blank" rel="noopener">View charts</a>
-          <span class="stat-sub" id="status-${g.id}">Loading…</span>
         </div>
       </div>
     `).join('');
 
     const apiFor = (appid) => `https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=${appid}`;
 
-    Promise.allSettled(games.map(g =>
-      fetch('https://api.allorigins.win/get?url=' + encodeURIComponent(apiFor(g.appid)))
-        .then(r => { if (!r.ok) throw new Error('network'); return r.json(); })
-        .then(data => {
-          const parsed = JSON.parse(data.contents);
-          const count = Number(parsed?.response?.player_count || 0);
-          return { id: g.id, name: g.name, count };
-        })
-        .catch(() => ({ id: g.id, name: g.name, count: 0, error: true }))
-    )).then(results => {
-      const values = results.map(r => r.value || r.reason || { count: 0 });
-      const max = Math.max(1, ...values.map(v => v.count||0));
-
-      values.forEach(v => {
-        const countEl = document.getElementById(`count-${v.id}`);
-        const barEl = document.getElementById(`bar-${v.id}`);
-        const statusEl = document.getElementById(`status-${v.id}`);
-        if (!countEl || !barEl || !statusEl) return;
-        const c = v.count || 0;
-        countEl.textContent = c.toLocaleString();
-        const pct = Math.round((c / max) * 100);
-        barEl.style.width = pct + '%';
-        statusEl.textContent = v.error ? 'Unavailable' : 'Live';
+    // Stagger API calls to avoid rate limiting
+    const fetchWithDelay = (game, delay) => {
+      return new Promise(resolve => {
+        setTimeout(() => {
+          fetch('https://api.allorigins.win/get?url=' + encodeURIComponent(apiFor(game.appid)))
+            .then(r => { 
+              if (!r.ok) {
+                console.warn(`Failed to fetch data for ${game.name}:`, r.status);
+                throw new Error('network'); 
+              }
+              return r.json(); 
+            })
+            .then(data => {
+              try {
+                const parsed = JSON.parse(data.contents);
+                const count = Number(parsed?.response?.player_count || 0);
+                resolve({ id: game.id, name: game.name, count, error: false });
+              } catch (e) {
+                console.error(`Error parsing data for ${game.name}:`, e);
+                resolve({ id: game.id, name: game.name, count: 0, error: true });
+              }
+            })
+            .catch(err => {
+              console.error(`Error fetching ${game.name}:`, err);
+              resolve({ id: game.id, name: game.name, count: 0, error: true });
+            });
+        }, delay);
       });
-    });
+    };
+
+    // Fetch all games with staggered delays (200ms between each)
+    Promise.all(games.map((g, index) => fetchWithDelay(g, index * 200)))
+      .then(results => {
+        console.log('Player stats results:', results);
+        
+      // Calculate max value for relative bar scaling across all games
+      const allCounts = results.filter(r => r && !r.error).map(r => r.count || 0);
+      const maxCount = Math.max(...allCounts, 1); // Ensure at least 1 to avoid division by zero
+      
+      // Update individual cards with values and bars
+      results.forEach((result) => {
+        const v = result && result.id ? result : { id: null, count: 0, error: true };
+        
+        const gameId = v.id;
+        if (!gameId) {
+          console.warn('Missing game ID in result:', result);
+          return;
+        }
+        const currentCount = v.count || 0;
+        
+        // Store current data point for historical tracking
+        if (!v.error) {
+          updateHistory(gameId, currentCount);
+        }
+        
+        // Update individual card value
+        const valueEl = document.getElementById(`value-${gameId}`);
+        if (valueEl) {
+          valueEl.textContent = v.error ? '—' : formatNumber(currentCount);
+        }
+        
+        // Update bar width (percentage relative to max)
+        const barEl = document.getElementById(`bar-${gameId}`);
+        if (barEl) {
+          if (v.error || currentCount === 0) {
+            barEl.style.width = '0%';
+          } else {
+            const percentage = Math.round((currentCount / maxCount) * 100);
+            barEl.style.width = percentage + '%';
+            // Add smooth transition
+            barEl.style.transition = 'width 0.6s ease';
+          }
+        }
+      });
+      })
+      .catch(err => {
+        console.error('Error fetching player stats:', err);
+      });
   }
 
   window.addEventListener('DOMContentLoaded', initPlayerStats);
