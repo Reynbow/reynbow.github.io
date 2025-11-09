@@ -121,6 +121,26 @@ p {
   line-height: 1.2;
 }
 
+.stat-value.loading {
+  color: #EF466F;
+}
+
+.stat-value.loading .typing-cursor {
+  display: inline-block;
+  color: #EF466F;
+  animation: blink-cursor 1s step-end infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink-cursor {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
 .stat-change {
   font-family: 'Roboto', sans-serif;
   font-size: 14px;

@@ -140,7 +140,7 @@ css:
           </div>
         </div>
         <div class="stat-value-container">
-          <span class="stat-value" id="value-${g.id}">—</span>
+          <span class="stat-value loading" id="value-${g.id}"><span class="typing-text" id="typing-${g.id}"></span><span class="typing-cursor">|</span></span>
         </div>
         <div class="stat-bar-container">
           <div class="stat-bar-fill" id="bar-${g.id}" style="width: 0%"></div>
@@ -152,85 +152,224 @@ css:
     `).join('');
 
     const apiFor = (appid) => `https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=${appid}`;
+    
+    // Test if we can reach the Steam API (for debugging)
+    console.log('Initializing player stats...');
+    
+    // Typing animation for loading text
+    const typingIntervals = {};
+    const TYPING_SPEED = 100; // Milliseconds between each character (lower = faster)
+    const TYPING_INITIAL_DELAY = 750; // Milliseconds before typing starts
+    
+    const startTypingAnimation = () => {
+      const fullText = 'Loading...';
+      
+      games.forEach((game, index) => {
+        const typingEl = document.getElementById(`typing-${game.id}`);
+        if (!typingEl) return;
+        
+        let currentIndex = 0;
+        typingEl.textContent = '';
+        
+        const typeCharacter = () => {
+          const valueEl = document.getElementById(`value-${game.id}`);
+          // Stop animation if loading class is removed
+          if (valueEl && !valueEl.classList.contains('loading')) {
+            if (typingIntervals[game.id]) {
+              clearTimeout(typingIntervals[game.id]);
+              clearInterval(typingIntervals[game.id]);
+              delete typingIntervals[game.id];
+            }
+            return;
+          }
+          
+          if (currentIndex < fullText.length) {
+            typingEl.textContent = fullText.substring(0, currentIndex + 1);
+            currentIndex++;
+            // Schedule next character
+            typingIntervals[game.id] = setTimeout(typeCharacter, TYPING_SPEED);
+          } else {
+            // Text is complete, cursor will continue blinking via CSS
+            // Set up a check interval to stop when loading is done
+            const checkInterval = setInterval(() => {
+              const valueEl = document.getElementById(`value-${game.id}`);
+              if (valueEl && !valueEl.classList.contains('loading')) {
+                clearInterval(checkInterval);
+                if (typingIntervals[game.id] === checkInterval) {
+                  delete typingIntervals[game.id];
+                }
+              }
+            }, 200);
+            typingIntervals[game.id] = checkInterval;
+          }
+        };
+        
+        // Start typing with initial delay (staggered slightly for each card)
+        const staggeredDelay = TYPING_INITIAL_DELAY + (index * 50); // 50ms stagger between cards
+        typingIntervals[game.id] = setTimeout(typeCharacter, staggeredDelay);
+      });
+    };
+    
+    // Start typing animation
+    startTypingAnimation();
+
+    // Fetch with timeout
+    const fetchWithTimeout = (url, timeout = 8000) => {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), timeout);
+      
+      return fetch(url, { signal: controller.signal })
+        .finally(() => clearTimeout(timeoutId));
+    };
+
+    // Try fetching with a specific proxy
+    const tryProxy = async (targetUrl, proxyBase, proxyType) => {
+      let proxyUrl;
+      if (proxyType === 'allorigins') {
+        proxyUrl = proxyBase + encodeURIComponent(targetUrl);
+      } else if (proxyType === 'corsproxy') {
+        proxyUrl = proxyBase + encodeURIComponent(targetUrl);
+      } else {
+        proxyUrl = proxyBase + targetUrl;
+      }
+      
+      const response = await fetchWithTimeout(proxyUrl, 8000);
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+      
+      const data = await response.json();
+      
+      // Handle different proxy response formats
+      if (proxyType === 'allorigins') {
+        if (data.contents) {
+          return JSON.parse(data.contents);
+        }
+        throw new Error('Invalid response format from allorigins');
+      } else if (proxyType === 'corsproxy') {
+        // corsproxy.io returns the data directly
+        return data;
+      } else {
+        return data;
+      }
+    };
 
     // Stagger API calls to avoid rate limiting
     const fetchWithDelay = (game, delay) => {
       return new Promise(resolve => {
-        setTimeout(() => {
-          fetch('https://api.allorigins.win/get?url=' + encodeURIComponent(apiFor(game.appid)))
-            .then(r => { 
-              if (!r.ok) {
-                console.warn(`Failed to fetch data for ${game.name}:`, r.status);
-                throw new Error('network'); 
+        setTimeout(async () => {
+          const targetUrl = apiFor(game.appid);
+          
+          // Try multiple proxies in order - using more reliable ones first
+          const proxies = [
+            { base: 'https://api.allorigins.win/get?url=', type: 'allorigins' },
+            { base: 'https://thingproxy.freeboard.io/fetch/', type: 'direct' },
+            { base: 'https://corsproxy.io/?', type: 'corsproxy' },
+            { base: 'https://api.codetabs.com/v1/proxy?quest=', type: 'direct' }
+          ];
+          
+          let lastError = null;
+          for (const proxy of proxies) {
+            try {
+              console.log(`Trying ${proxy.base} for ${game.name}...`);
+              const parsed = await tryProxy(targetUrl, proxy.base, proxy.type);
+              
+              // Validate response structure
+              if (!parsed || !parsed.response) {
+                throw new Error('Invalid response structure');
               }
-              return r.json(); 
-            })
-            .then(data => {
-              try {
-                const parsed = JSON.parse(data.contents);
-                const count = Number(parsed?.response?.player_count || 0);
-                resolve({ id: game.id, name: game.name, count, error: false });
-              } catch (e) {
-                console.error(`Error parsing data for ${game.name}:`, e);
-                resolve({ id: game.id, name: game.name, count: 0, error: true });
+              
+              const count = Number(parsed.response.player_count || 0);
+              if (isNaN(count)) {
+                throw new Error('Invalid player count');
               }
-            })
-            .catch(err => {
-              console.error(`Error fetching ${game.name}:`, err);
-              resolve({ id: game.id, name: game.name, count: 0, error: true });
-            });
+              
+              console.log(`✓ Successfully fetched ${game.name}: ${count} players`);
+              resolve({ id: game.id, name: game.name, count, error: false });
+              return;
+            } catch (err) {
+              lastError = err;
+              console.warn(`✗ Proxy ${proxy.base} failed for ${game.name}:`, err.message || err);
+              continue;
+            }
+          }
+          
+          // All proxies failed
+          console.error(`✗ All proxies failed for ${game.name}. Last error:`, lastError?.message || lastError);
+          resolve({ id: game.id, name: game.name, count: 0, error: true });
         }, delay);
       });
     };
 
-    // Fetch all games with staggered delays (200ms between each)
-    Promise.all(games.map((g, index) => fetchWithDelay(g, index * 200)))
-      .then(results => {
-        console.log('Player stats results:', results);
-        
-      // Calculate max value for relative bar scaling across all games
-      const allCounts = results.filter(r => r && !r.error).map(r => r.count || 0);
-      const maxCount = Math.max(...allCounts, 1); // Ensure at least 1 to avoid division by zero
+    // Track all results for calculating max value
+    const allResults = [];
+    let resultsCount = 0;
+    
+    // Update a single card
+    const updateCard = (result, allResultsForMax) => {
+      const v = result && result.id ? result : { id: null, count: 0, error: true };
+      const gameId = v.id;
+      if (!gameId) {
+        console.warn('Missing game ID in result:', result);
+        return;
+      }
       
-      // Update individual cards with values and bars
-      results.forEach((result) => {
-        const v = result && result.id ? result : { id: null, count: 0, error: true };
-        
-        const gameId = v.id;
-        if (!gameId) {
-          console.warn('Missing game ID in result:', result);
-          return;
+      const currentCount = v.count || 0;
+      
+      // Store current data point for historical tracking
+      if (!v.error) {
+        updateHistory(gameId, currentCount);
+      }
+      
+      // Calculate max from all results so far (including this one)
+      const allCounts = allResultsForMax.filter(r => r && !r.error).map(r => r.count || 0);
+      const maxCount = Math.max(...allCounts, 1);
+      
+      // Update individual card value
+      const valueEl = document.getElementById(`value-${gameId}`);
+      if (valueEl) {
+        valueEl.classList.remove('loading');
+        valueEl.textContent = v.error ? '—' : formatNumber(currentCount);
+      }
+      
+      // Update bar width (percentage relative to max)
+      const barEl = document.getElementById(`bar-${gameId}`);
+      if (barEl) {
+        if (v.error || currentCount === 0) {
+          barEl.style.width = '0%';
+        } else {
+          const percentage = Math.round((currentCount / maxCount) * 100);
+          barEl.style.width = percentage + '%';
+          barEl.style.transition = 'width 0.6s ease';
         }
-        const currentCount = v.count || 0;
-        
-        // Store current data point for historical tracking
-        if (!v.error) {
-          updateHistory(gameId, currentCount);
-        }
-        
-        // Update individual card value
-        const valueEl = document.getElementById(`value-${gameId}`);
-        if (valueEl) {
-          valueEl.textContent = v.error ? '—' : formatNumber(currentCount);
-        }
-        
-        // Update bar width (percentage relative to max)
-        const barEl = document.getElementById(`bar-${gameId}`);
-        if (barEl) {
-          if (v.error || currentCount === 0) {
-            barEl.style.width = '0%';
-          } else {
-            const percentage = Math.round((currentCount / maxCount) * 100);
-            barEl.style.width = percentage + '%';
-            // Add smooth transition
-            barEl.style.transition = 'width 0.6s ease';
+      }
+      
+      // Recalculate bars for all cards when we get new data (to maintain relative scaling)
+      if (allResultsForMax.length > 0) {
+        allResultsForMax.forEach(r => {
+          if (r && r.id && !r.error) {
+            const otherBarEl = document.getElementById(`bar-${r.id}`);
+            if (otherBarEl && r.count > 0) {
+              const otherPercentage = Math.round((r.count / maxCount) * 100);
+              otherBarEl.style.width = otherPercentage + '%';
+            }
           }
-        }
-      });
-      })
-      .catch(err => {
-        console.error('Error fetching player stats:', err);
-      });
+        });
+      }
+    };
+    
+    // Fetch all games with staggered delays and update as they arrive
+    games.forEach((g, index) => {
+      fetchWithDelay(g, index * 200)
+        .then(result => {
+          allResults.push(result);
+          updateCard(result, allResults);
+          resultsCount++;
+        })
+        .catch(err => {
+          console.error('Unexpected error in fetch chain:', err);
+        });
+    });
   }
 
   window.addEventListener('DOMContentLoaded', initPlayerStats);
